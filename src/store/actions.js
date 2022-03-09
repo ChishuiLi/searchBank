@@ -2,7 +2,7 @@
 通过mutations间接更新state的多个方法对象
 */
 import {reqSearch} from '../api/index'
-import {SEARCH_USERS_RESULT} from './mutation-types'
+import {SEARCH_USERS_RESULT,SET_PROBLEM} from './mutation-types'
 
 export default {
     async getUsers({commit},keyword){
@@ -12,5 +12,9 @@ export default {
             const users = result.items
             commit(SEARCH_USERS_RESULT,{users})
         }
+    },
+
+    setProblem({commit},item){
+        commit(SET_PROBLEM,{item})
     }
 }

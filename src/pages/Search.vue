@@ -1,18 +1,7 @@
 <template>
   <div>
+    <Header :title="title"/>
       <el-container >
-        <el-header style="text-align: right; font-size: 12px">
-          <el-dropdown>
-            <i class="el-icon-setting" style="margin-right: 15px"></i>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>查看</el-dropdown-item>
-              <el-dropdown-item>新增</el-dropdown-item>
-              <el-dropdown-item>删除</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-          <span>王小虎</span>
-        </el-header>
-
         <el-main>
           <input type="text" class="input" placeholder="输入查找用户名" v-model="keyword">
           <el-button type="primary" icon="el-icon-search" @click="send">搜索</el-button>
@@ -29,12 +18,17 @@
 </template>
 
 <script>
+import Header from "@/components/Header";
 import {mapActions,mapState} from 'vuex'
 export default {
   name: "Main",
+  components:{
+    Header
+  },
   data() {
     return {
-      keyword:''
+      keyword:'',
+      title:'搜索',
     }
   },
   methods:{
@@ -62,7 +56,7 @@ export default {
 
 .input {
   height: 40px;
-  width: 80%;
+  width: 60%;
   flex: auto;
 }
 
