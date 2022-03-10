@@ -2,8 +2,7 @@
   <div>
     <Header :title="title"/>
     <div class="center">
-      <form role="form">
-        题目编号：<input type="text" v-model="problem.num">
+      <form role="form" @submit="setPro">
         <div class="form-group">
           <label>题目</label>
           <input type="text" class="form-control" v-model="problem.text"/>
@@ -28,15 +27,16 @@
         <div class="checkbox">
           <label><input type="checkbox" />Check me out</label>
         </div>
-        <button type="submit" class="btn btn-default" @click="setPro">确定</button>
+        <button class="btn btn-default" >确定</button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header";
+import Header from "@/components/MyHeader";
 import {mapActions} from 'vuex'
+import {nanoid} from 'nanoid'
 export default {
   name: "Problem",
   components:{
@@ -46,7 +46,7 @@ export default {
     return{
       title:'题卷',
       problem:{
-        num:'', //题目编号
+        id:'', //题目编号
         text:'', //题目内容
         answer:{ //设置选项
           A:'',
@@ -61,7 +61,9 @@ export default {
   methods:{
     ...mapActions(['setProblem']),
     setPro(){
-      this.setProblem(this.problem)
+      const problem = this.problem
+      problem.id = nanoid()  //设置唯一的id
+      this.setProblem(problem)
     }
   },
 }

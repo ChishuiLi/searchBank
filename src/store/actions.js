@@ -2,7 +2,7 @@
 通过mutations间接更新state的多个方法对象
 */
 import {reqSearch} from '../api/index'
-import {SEARCH_USERS_RESULT,SET_PROBLEM} from './mutation-types'
+import {REMOVE_ONE, SEARCH_USERS_RESULT, SET_PROBLEM} from './mutation-types'
 
 export default {
     async getUsers({commit},keyword){
@@ -14,7 +14,14 @@ export default {
         }
     },
 
+    //添加一个题目
     setProblem({commit},item){
         commit(SET_PROBLEM,{item})
+    },
+
+    //删除一个题目
+    removeOne({commit},id){
+        commit(REMOVE_ONE,id)
+        console.log('触发了actions')
     }
 }

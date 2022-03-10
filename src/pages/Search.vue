@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
+import Header from "@/components/MyHeader";
 import {mapActions,mapState} from 'vuex'
 export default {
   name: "Main",
