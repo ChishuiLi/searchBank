@@ -7,7 +7,7 @@
       <input type="checkbox"/>C、{{item.answer.C}}
       <input type="checkbox"/>D、{{item.answer.D}}
     </label>
-    <button class="btn btn-danger" @click="removeOne(item.id)">删除</button>
+    <button  class="btn btn-danger" @click="removeOne(item.id)">删除</button>
   </li>
 </template>
 
@@ -24,7 +24,8 @@ export default {
       //if(confirm('确定删除该题目？')){
       //  this.removeOne(id)
       //}
-      this.removeOne(id)
+      console.log(id)
+      //this.removeOne(id)
 
     }
   }

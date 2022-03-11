@@ -19,5 +19,14 @@ export default {
             console.log('触发了过滤')
             return pro.id !== id
         })
+        /*
+        let arr = []
+        this.state.problems.forEach(function (item){
+
+            if(item.id !== id){
+                arr.push(item)
+            }
+        })
+        state.problems = arr*/
     }
 }

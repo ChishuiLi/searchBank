@@ -2,7 +2,7 @@
   <div>
     <Header :title="title"/>
     <ul class="todo-main">
-      <problemItem v-for="(item,index) in problems" :key="index" :item="item"/>
+      <problemItem v-for="item in problems" :key="item.id" :item="item"/>
     </ul>
   </div>
 

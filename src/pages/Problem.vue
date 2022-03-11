@@ -35,7 +35,7 @@
 
 <script>
 import Header from "@/components/MyHeader";
-import {mapActions} from 'vuex'
+import {mapActions,mapState} from 'vuex'
 import {nanoid} from 'nanoid'
 export default {
   name: "Problem",
@@ -46,7 +46,6 @@ export default {
     return{
       title:'题卷',
       problem:{
-        id:'', //题目编号
         text:'', //题目内容
         answer:{ //设置选项
           A:'',
@@ -61,11 +60,34 @@ export default {
   methods:{
     ...mapActions(['setProblem']),
     setPro(){
-      const problem = this.problem
+      let pro = {
+        id : nanoid(),
+        text : this.problem.text,
+        answer: {
+          A:this.problem.answer.A,
+          B:this.problem.answer.B,
+          C:this.problem.answer.C,
+          D:this.problem.answer.D,
+        },
+        rightAnswer: this.problem.rightAnswer
+      }
+      this.setProblem(pro)
+      /*const problem = this.problem
       problem.id = nanoid()  //设置唯一的id
-      this.setProblem(problem)
+      this.setProblem(problem)*/
     }
   },
+  computed:{
+    ...mapState(['problems'])
+  },
+  watch:{
+    problems:{
+      deep:true,  //深度监视，检测problems里的值是否变化
+      handler(value){
+        localStorage.setItem('problems',JSON.stringify(value))
+      }
+    }
+  }
 }
 </script>
 
