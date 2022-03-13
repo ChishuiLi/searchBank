@@ -20,7 +20,7 @@ export default {
     },
 
     //删除一个题目
-    removeOne({commit},id){
+    remove_One({commit},id){
         commit(REMOVE_ONE,id)
         console.log('触发了actions')
     }

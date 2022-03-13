@@ -17,7 +17,7 @@ export default {
   name: "problemItem",
   props:['item'],
   methods:{
-    ...mapActions(['removeOne']),
+    ...mapActions(['remove_One']),
 
     //删除一个题目
     removeOne(id){
@@ -25,7 +25,7 @@ export default {
       //  this.removeOne(id)
       //}
       console.log(id)
-      //this.removeOne(id)
+      this.remove_One(id)  //开始时方法名与click方法重名。
 
     }
   }
